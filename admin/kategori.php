@@ -220,12 +220,12 @@
                               ['id_kategori']; ?></td>
                               <td>
                                   <a href="e_kategori.php?id=<?php echo $hasil
-                                  [id_kategori]; ?>"
+                                  ["id_kategori"]; ?>"
                                   class="btn btn-warning">
                                 <i class="bi bi-pencil-square">
                                 </a>
                                 <a href="h_kategori.php?id=<?php echo $hasil
-                                [id_kategori]; ?>"
+                                ["id_kategori"]; ?>"
                                   class="btn btn-danger">
                                   onclick="return confirm('Apakah Anda yakin ingin 
                                   menghapus data ini?')">
