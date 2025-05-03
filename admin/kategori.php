@@ -179,7 +179,7 @@
           </div>
         </div>
       </div>
-    </div><!-- End Page Title -->
+    </div>
 
         <section class="section">
           <div class="row">
