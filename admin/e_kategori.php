@@ -65,7 +65,7 @@ if (isset($_POST['simpan'])) {
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">electrons</span>
             </a>
@@ -171,7 +171,7 @@ if (isset($_POST['simpan'])) {
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
                     <li class="breadcrumb-item">Kategori</li>
-                    <li class="breadcrumb-item active">Tambah</li>
+                    <li class="breadcrumb-item active">Edit</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
