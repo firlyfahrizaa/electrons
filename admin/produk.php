@@ -94,62 +94,62 @@
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+    <aside id="sidebar" class="sidebar">
 
-<ul class="sidebar-nav" id="sidebar-nav">
+        <ul class="sidebar-nav" id="sidebar-nav">
 
-  <li class="nav-item">
-    <a class="nav-link " href="index.php">
-      <i class="bi bi-house"></i>
-      <span>Beranda</span>
-    </a>
-  </li><!-- End Beranda Nav -->
+            <li class="nav-item">
+                <a class="nav-link " href="index.php">
+                    <i class="bi bi-house"></i>
+                    <span>Beranda</span>
+                </a>
+            </li><!-- End Beranda Nav -->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="kategori.php">
-      <i class="bi bi-tags"></i>
-      <span>Kategori</span>
-    </a>
-  </li><!-- End Kategori Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="kategori.php">
+                    <i class="bi bi-tags"></i>
+                    <span>Kategori</span>
+                </a>
+            </li><!-- End Kategori Page Nav -->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="produk.php">
-      <i class="bi bi-archive"></i>
-      <span>Produk</span>
-    </a>
-  </li><!-- End Produk Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="produk.php">
+                    <i class="bi bi-archive"></i>
+                    <span>Produk</span>
+                </a>
+            </li><!-- End Produk Page Nav -->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="keranjang.php">
-      <i class="bi bi-bag"></i>
-      <span>Keranjang</span>
-    </a>
-  </li><!-- End Keranjang Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="keranjang.php">
+                    <i class="bi bi-bag"></i>
+                    <span>Keranjang</span>
+                </a>
+            </li><!-- End Keranjang Page Nav -->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="transaksi.php">
-      <i class="bi bi-wallet"></i>
-      <span>Transaksi</span>
-    </a>
-  </li><!-- End Transaksi Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="transaksi.php">
+                    <i class="bi bi-wallet"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li><!-- End Transaksi Page Nav -->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="laporan.php">
-      <i class="bi bi-exclamation-triangle"></i>
-      <span>Laporan</span>
-    </a>
-  </li><!-- End Laporan Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="laporan.php">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <span>Laporan</span>
+                </a>
+            </li><!-- End Laporan Page Nav -->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pengguna.php">
-      <i class="bi bi-person-circle"></i>
-      <span>Pengguna</span>
-    </a>
-  </li><!-- End Pengguna Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pengguna.php">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Pengguna</span>
+                </a>
+            </li><!-- End Pengguna Page Nav -->
 
-</ul>
+        </ul>
 
-</aside><!-- End Sidebar-->
+    </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
 
@@ -177,12 +177,9 @@
 
         <section class="section">
             <div class="row">
-
-                <div class="col-lg-6">
-
+                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-
                             <!-- Table with stripped rows -->
                             <table class="table table-striped mt-2">
                                 <thead>
@@ -202,78 +199,79 @@
                                     $no = 1;
 
                                     $query = isset($_GET['query']) ? mysqli_real_escape_string($koneksi, $_GET['query']) : '';
-                                    $sql_query = "SELECT tb_produk.*, tb_kategori.nm_kategori FROM tb_produk LEFT JOIN tb_kategori ON tb_produk.id_kategori = tb_kategori.id_kategori;
+                                    $sql_query = "SELECT tb_produk.*, tb_kategori.nm_kategori 
+                                          FROM tb_produk 
+                                          LEFT JOIN tb_kategori ON tb_produk.id_kategori = tb_kategori.id_kategori";
+
                                     if (!empty($query)) {
-                                        $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_kategori.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'" ;
+                                        $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' 
+                                                OR tb_kategori.nm_kategori LIKE '%$query%' 
+                                                OR tb_produk.desk LIKE '%$query%'";
                                     }
+
                                     $sql_query .= " ORDER BY tb_produk.id_produk ASC";
                                     $sql = mysqli_query($koneksi, $sql_query);
 
                                     if (mysqli_num_rows($sql) > 0) {
+                                        while ($hasil = mysqli_fetch_array($sql)) {
                                     ?>
-
                                             <tr>
                                                 <td><?php echo $no++; ?></td>
                                                 <td><?php echo $hasil['nm_produk']; ?></td>
-                                                <td>Rp <?php echo number_format($hasil['harga'], 0, ',','.'); ?></td>
+                                                <td>Rp <?php echo number_format($hasil['harga'], 0, ',', '.'); ?></td>
                                                 <td><?php echo $hasil['stok']; ?></td>
-                                                <td><?php echo $hasil['desk']; ?></td>
                                                 <td><?php echo $hasil['nm_kategori']; ?></td>
                                                 <td>
                                                     <?php if (!empty($hasil['gambar'])) { ?>
-                                                        <img src="produk_img/<?php echo $hasil['gambar']; ?>" width="100"
+                                                        <img src="produk_img/<?php echo $hasil['gambar']; ?>" width="100">
                                                     <?php } else { ?>
                                                         Tidak ada gambar
                                                     <?php } ?>
                                                 </td>
+                                                <td>
+                                                    <a href="e_produk.php?id=<?php echo $hasil['id_produk']; ?>" class="btn btn-warning">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </a>
+                                                    <a href="h_produk.php?id=<?php echo $hasil['id_produk']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                        <i class="bi bi-trash"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-
-                                            <td>
-                                            <a href="e_produk.php?id=<?php echo $hasil['id_produk'];?>" class="btn btn-warning">
-                                            </a>
-                                            <a href="h_produk.php?id=<?php echo $hasil['id_produk'];?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="bi bi-trash"></i>
-                                            </a>
-                                            
-                                            </td>
-                                        </tr>
-                                    <?php
-                                    } 
-                                } else {
-                                    ?>    
+                                        <?php
+                                        }
+                                    } else {
+                                        ?>
                                         <tr>
                                             <td colspan="8" class="text-center">Belum Ada Data</td>
-                                        </tr>     
+                                        </tr>
                                     <?php
-                                }
+                                    }
                                     ?>
-
-
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>electrons</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://instagram.com/firlyfahriza/">FirlyFahriza</a>
-    </div>
-  </footer><!-- End Footer -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>electrons</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+            Designed by <a href="https://instagram.com/firlyfahriza/">FirlyFahriza</a>
+        </div>
+    </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
