@@ -1,4 +1,20 @@
 <?php
+session_start();
+include "koneksi.php";
+
+if (!isset($_SESSION['login'])) {
+  header("Location: login.php");
+  exit;
+}
+
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
+  echo "<script>alert('Anda tidak memiliki akses sebagai admin');</script>";
+  header("Location: login.php");
+  exit;
+}
+?>
+
+<?php
 include 'koneksi.php';
 if (isset($_POST['simpan'])) {
     $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
@@ -95,7 +111,7 @@ if (isset($_POST['simpan'])) {
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+            <a class="dropdown-item d-flex align-items-center" href="logout.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>

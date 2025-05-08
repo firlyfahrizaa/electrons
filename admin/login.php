@@ -1,3 +1,36 @@
+<?php
+session_start();
+require "koneksi.php";
+
+if (isset($_POST['login'])) {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
+
+  if (mysqli_num_rows($result) === 1) {
+    $row = mysqli_fetch_assoc($result);
+
+    if (password_verify($password, $row['password'])) {
+
+      if ($row['status'] === 'admin') {
+        $_SESSION['login'] = true;
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['status'] = $row['status'];
+        header("Location: index.php");
+        exit;
+      } else {
+        echo "<script>alert('Anda tidak memiliki akses sebagai admin');</script>";
+      }
+    } else {
+      echo "<script>alert('Username atau password salah!');</script>";
+    }
+  } else {
+    echo "<script>alert('Username atau password salah!');</script>";
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +38,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Login - Nama Website Admin</title>
+  <title>Login - electrons Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -43,7 +76,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="index.php" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">Nama Website</span>
+                  <span class="d-none d-lg-block">electrons</span>
                 </a>
               </div><!-- End Logo -->
 
@@ -56,10 +89,11 @@
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3" method="POST">
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
+                      <div class="input-group has-validation">
                         <input type="text" name="username" class="form-control" id="yourUsername" required>
                       </div>
                     </div>
@@ -77,7 +111,7 @@
               </div>
 
               <div class="credits">
-                Designed by <a href="https://instagram.com/namaig/">Nama Anda</a>
+                Designed by <a href="https://instagram.com/firlyfahriza/">FirlyFahriza</a>
               </div>
 
             </div>
