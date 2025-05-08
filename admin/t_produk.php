@@ -255,7 +255,7 @@ if (isset($_POST['simpan'])) {
             &copy; Copyright <strong><span>electrons</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig">FirlyFahriza</a>
+            Designed by <a href="https://instagram.com/firlyfahriza" target="_blank">FirlyFahriza</a>
         </div>
     </footer><!-- End Footer -->
 
