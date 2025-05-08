@@ -1,3 +1,45 @@
+<?php
+include 'koneksi.php';
+
+$auto = mysqli_query($koneksi, "SELECT max(id_produk) as max_code FROM tb_produk");
+$hasil = mysqli_fetch_array($auto);
+$code = $hasil['max_code'];
+$urutan = (int) substr($code, 1, 3);
+$urutan++;
+$huruf = "P";
+$id_produk = $huruf . sprintf("%03s", $urutan);
+
+if (isset($_POST['simpan'])) {
+    $nm_produk = $_POST['nm_produk'];
+    $harga = $_POST['harga'];
+    $stok = $_POST['stok'];
+    $desk = $_POST['desk'];
+    $id_kategori = $_POST['id_kategori'];
+
+    $imgfile = $_FILES['gambar']['name'];
+    $tmpfile = $_FILES['gambar']['tmp_name'];
+    $extension = strtolower(pathinfo($imgfile, PATHINFO_EXTENSION));
+
+    $dir = "produk_img/";
+    $allowed_extensions = array('jpg', 'jpeg', 'png', 'webp');
+
+    if (!in_array($extension, $allowed_extensions)) {
+        echo "<script>alert('Format gambar tidak valid!');</script>";
+    } else {
+        $imgnewfile = md5(time() . $imgfile) . '.' . $extension;
+        move_uploaded_file($tmp_file, $dir . $imgnewfile);
+
+        $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_kategori, gambar) VALUES ('$id_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_kategori', '$imgnewfile')");
+
+        if ($query) {
+            echo "<script>alert('Data berhasil disimpan!'); window.location.href='produk.php';</script>";
+        } else {
+            echo "<script>alert('Data gagal disimpan!');</script>";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +91,7 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/tess.png" alt="Profile" class="rounded-circle">
                         <!-- profile-img.jpg diganti nama file gambar kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
@@ -86,8 +128,8 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="index.php">
-                    <i class="bi bi-house-door"></i>
+                <a class="nav-link " href="index.php">
+                    <i class="bi bi-house"></i>
                     <span>Beranda</span>
                 </a>
             </li><!-- End Beranda Nav -->
@@ -95,43 +137,45 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="kategori.php">
                     <i class="bi bi-tags"></i>
-                    <span>Kategori Produk</span>
+                    <span>Kategori</span>
                 </a>
-            </li><!-- End Kategori Produk Page Nav -->
+            </li><!-- End Kategori Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="produk.php">
-                    <i class="bi bi-shop"></i>
+                <a class="nav-link collapsed" href="produk.php">
+                    <i class="bi bi-archive"></i>
                     <span>Produk</span>
                 </a>
             </li><!-- End Produk Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="keranjang.php">
-                    <i class="bi bi-cart"></i>
+                    <i class="bi bi-bag"></i>
                     <span>Keranjang</span>
                 </a>
             </li><!-- End Keranjang Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="transaksi.php">
-                    <i class="bi bi-receipt"></i>
+                    <i class="bi bi-wallet"></i>
                     <span>Transaksi</span>
                 </a>
             </li><!-- End Transaksi Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="laporan.php">
-                    <i class="bi bi-file-earmark-bar-graph"></i>
+                    <i class="bi bi-exclamation-triangle"></i>
                     <span>Laporan</span>
                 </a>
             </li><!-- End Laporan Page Nav -->
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="pengguna.php">
-                    <i class="bi bi-people"></i>
+                    <i class="bi bi-person-circle"></i>
                     <span>Pengguna</span>
                 </a>
             </li><!-- End Pengguna Page Nav -->
+
         </ul>
 
     </aside><!-- End Sidebar-->
@@ -143,7 +187,7 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                    <li class="breadcrumb-item">Produk</li>
+                    <li class="breadcrumb-item"><a href="produk.php">Produk</a></li>
                     <li class="breadcrumb-item active">Tambah</li>
                 </ol>
             </nav>
@@ -177,6 +221,13 @@
                                     <label for="id_kategori" class="form-label">Kategori</label>
                                     <select class="form-control" id="id_kategori" name="id_kategori" required>
                                         <option value="">-- Pilih Kategori --</option>
+                                        <?php
+                                        include 'koneksi.php';
+                                        $query = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
+                                        while ($kategori = mysqli_fetch_array($query)) {
+                                            echo "<option value='{$kategori['id_kategori']}'>{$kategori['nm_kategori']}</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-12">
