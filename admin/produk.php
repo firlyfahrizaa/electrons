@@ -115,7 +115,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="index.php">
+                <a class="nav-link collapsed" href="index.php">
                     <i class="bi bi-house"></i>
                     <span>Beranda</span>
                 </a>
@@ -129,7 +129,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
             </li><!-- End Kategori Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="produk.php">
+                <a class="nav-link" href="produk.php">
                     <i class="bi bi-archive"></i>
                     <span>Produk</span>
                 </a>
@@ -204,6 +204,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                                         <th scope="col">Nama Produk</th>
                                         <th scope="col">Harga</th>
                                         <th scope="col">Stok</th>
+                                        <th scope="col">Deskripsi</th>
                                         <th scope="col">Nama Kategori</th>
                                         <th scope="col">Gambar</th>
                                         <th scope="col">Aksi</th>
@@ -236,6 +237,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                                                 <td><?php echo $hasil['nm_produk']; ?></td>
                                                 <td>Rp <?php echo number_format($hasil['harga'], 0, ',', '.'); ?></td>
                                                 <td><?php echo $hasil['stok']; ?></td>
+                                                <td><?php echo $hasil['desk']; ?></td>
                                                 <td><?php echo $hasil['nm_kategori']; ?></td>
                                                 <td>
                                                     <?php if (!empty($hasil['gambar'])) { ?>
