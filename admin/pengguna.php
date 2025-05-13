@@ -3,14 +3,14 @@ session_start();
 include "koneksi.php";
 
 if (!isset($_SESSION['login'])) {
-  header("Location: login.php");
-  exit;
+    header("Location: login.php");
+    exit;
 }
 
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
-  echo "<script>alert('Anda tidak memiliki akses sebagai admin');</script>";
-  header("Location: login.php");
-  exit;
+    echo "<script>alert('Anda tidak memiliki akses sebagai admin');</script>";
+    header("Location: login.php");
+    exit;
 }
 ?>
 
@@ -85,7 +85,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Firly Fahriza</h6>
+                            <h6><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -96,7 +96,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                         </li>
 
                         <li>
-                        <a class="dropdown-item d-flex align-items-center" href="logout.php">
+                            <a class="dropdown-item d-flex align-items-center" href="logout.php">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
