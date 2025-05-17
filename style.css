@@ -80,7 +80,7 @@ body {
 	overflow-x: hidden;
 }
 a {
-	color: #a4a4a4;
+	color: #ffffff;
 	transition: 0.3s ease-in-out;
 }
 a:hover {
@@ -314,7 +314,7 @@ textarea {
 /*----------------------------------------*/
 button.li-btn {
 	border: none;
-	background: #fed700;
+	background: #fee500;
 	color: #242424;
 	font-size: 20px;
 	width: 45px;
@@ -1313,9 +1313,9 @@ textarea:focus {
 /*----------------------------------------*/
 /*Header Top*/
 .header-top {
-	background: #f8f9f9;
+	background: #1100ff;
 	padding: 12px 0;
-	border-bottom: 1px solid #e1e1e1;
+	border-bottom: 1px solid #1c02ff;
 }
 /*Phone Wrap*/
 .phone-wrap > li > span {
@@ -1437,6 +1437,7 @@ textarea:focus {
 /*Header Middle*/
 .header-middle {
 	padding: 30px;
+	background: #001aff;
 }
 .hm-searchbox {
 	display: flex;
@@ -1734,7 +1735,7 @@ textarea:focus {
 }
 /*Header Bottom Menu*/
 .header-bottom {
-		background: #fed700;
+		background: #2f00fe;
 		margin-bottom: 20px;
 }
 .hb-menu > nav > ul {
@@ -1748,7 +1749,7 @@ textarea:focus {
 }
 .hb-menu nav > ul > li > a {
 	display: flex;
-	color: #242424;
+	color: #ffffff;
 	text-transform: uppercase;
 	font-size: 14px;
 	line-height: 35px;
@@ -1766,10 +1767,9 @@ textarea:focus {
 }
 .hb-menu nav > ul > li:hover > a, 
 .hb-menu nav > ul > li:hover > a::after {
-		color: #ffffff;
+		color: #ffbb00;
 }
 .hb-menu nav > ul > li > a::after {
-	content: "\f107";
 	position: absolute;
 	top: 8px;
 	right: 15px;
@@ -1928,21 +1928,6 @@ textarea:focus {
 .hb-menu nav > ul > .megamenu-static-holder > a::after {
 	position: static;
 	margin: -1px 0 0 10px;
-}
-/*Sticky*/
-.header-sticky.sticky {
-	background: rgba(254,215,0,.8);
-	left: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	-webkit-transition: all 300ms ease-in 0s;
-	transition: all 300ms ease-in 0s;
-	z-index: 1049;
-}
-.sticky {
-		-webkit-animation: 800ms ease-in-out 0s normal none 1 running slideInDown;
-		animation: 800ms ease-in-out 0s normal none 1 running slideInDown;
 }
 /*Header Bottom Dropdown Menu*/
 .hb-menu nav > ul > li > ul.hb-dropdown {
@@ -2994,7 +2979,7 @@ text-align: center;
 	background: #ffffff;
 }
 .li-header-4 .header-bottom {
-	background: #293a6c;
+	background: #2f00fe;
 	border-top: 1px solid rgba(255,255,255,.1);
 	color: #ffffff;
 }
@@ -3058,8 +3043,6 @@ text-align: center;
 	font-family: fontawesome;
 }
 .category-heading > h2 > i {
-	float: ;
-	text-align: ;
 	float: right;
 	padding-right: 20px;
 	font-size: 12px;
