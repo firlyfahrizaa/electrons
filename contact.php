@@ -4,7 +4,6 @@ session_start();
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<!-- contact32:04-->
 
 <head>
     <meta charset="utf-8">
@@ -81,7 +80,7 @@ session_start();
 
                                     if (!isset($_SESSION['id_user'])) {
                                     ?>
-                                        <!-- Jika belum login -->
+                                        
                                         <li class="hm-wishlist">
                                             <a href="login.php" title="Login">
                                                 <i class="fa fa-user"></i>
@@ -89,8 +88,8 @@ session_start();
                                         </li>
                                     <?php
                                     } else {
-                                        // Ambil nama user dari session atau database jika mau
-                                        $nama_user = $_SESSION['username']; // pastikan diset saat login
+                                       
+                                        $nama_user = $_SESSION['username']; 
 
                                     ?>
                                         <!-- User Icon with Dropdown -->
@@ -104,7 +103,7 @@ session_start();
                                                 </li>
                                                 <li>
                                                     <hr style="margin: 5px 0;">
-                                                </li> <!-- Garis pembatas -->
+                                                </li>
                                                 <li>
                                                     <a href="logout.php" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
                                                         <i class="fa fa-sign-out"></i> Logout
@@ -239,7 +238,7 @@ session_start();
                             </div>
                             <div class="single-contact-block">
                                 <h4><i class="fa fa-phone"></i> Telepon</h4>
-                                <p><a href="tel:+6281234567890">(+62) 812 2532 1543</a></p>
+                                <p><a href="tel:+6281225321543">(+62) 812 2532 1543</a></p>
                             </div>
                             <div class="single-contact-block last-child">
                                 <h4><i class="fa fa-envelope-o"></i> Email</h4>
@@ -277,7 +276,6 @@ session_start();
                             <p class="form-messege"></p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -290,7 +288,6 @@ session_start();
                     <!-- Begin Footer Shipping Area -->
                     <div class="footer-shipping pt-60 pb-55 pb-xs-25">
                         <div class="row">
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -302,9 +299,7 @@ session_start();
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
 
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -316,9 +311,7 @@ session_start();
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
 
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -330,9 +323,7 @@ session_start();
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
 
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -362,7 +353,7 @@ session_start();
                                 <div class="footer-logo">
                                     <h1>electrons</h1>
                                     <p class="info">
-                                        Technozone adalah toko online yang menyediakan berbagai produk elektronik berkualitas seperti smartphone, tablet, laptop, dan aksesori lainnya dengan harga terbaik.
+                                        electrons adalah toko elektronik online yang menyediakan barang-barang elektronik terbaik yang ada!
                                     </p>
                                 </div>
                                 <ul class="des">
@@ -372,7 +363,7 @@ session_start();
                                     </li>
                                     <li>
                                         <span>Telepon: </span>
-                                        <a href="#">(+62) 812 2532 1543</a>
+                                        <a href="tel:+6281225321543">(+62) 812 2532 1543</a>
                                     </li>
                                     <li>
                                         <span>Email: </span>
@@ -500,20 +491,13 @@ session_start();
     <script src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyChs2QWiAhnzz0a4OEhzqCXwx_qA9ST_lE"></script>
 
     <script>
-        // When the window has finished loading create our google map below
         google.maps.event.addDomListener(window, 'load', init);
 
         function init() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
             var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
                 zoom: 12,
                 scrollwheel: false,
-                // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(40.740610, -73.935242), // New York
-                // How you would like to style the map. 
-                // This is where you would paste any style found on
+                center: new google.maps.LatLng(40.740610, -73.935242),
                 styles: [{
                         "featureType": "water",
                         "elementType": "geometry",
@@ -689,7 +673,5 @@ session_start();
         }
     </script>
 </body>
-
-<!-- contact32:04-->
 
 </html>

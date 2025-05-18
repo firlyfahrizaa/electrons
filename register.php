@@ -9,8 +9,6 @@ $data = mysqli_fetch_array($sql);
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<!-- login-register31:27-->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -250,7 +248,6 @@ $data = mysqli_fetch_array($sql);
                     <!-- Begin Footer Shipping Area -->
                     <div class="footer-shipping pt-60 pb-55 pb-xs-25">
                         <div class="row">
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -262,9 +259,7 @@ $data = mysqli_fetch_array($sql);
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
 
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -276,9 +271,7 @@ $data = mysqli_fetch_array($sql);
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
 
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -290,9 +283,7 @@ $data = mysqli_fetch_array($sql);
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
 
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -304,7 +295,6 @@ $data = mysqli_fetch_array($sql);
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
                         </div>
                     </div>
 
@@ -332,7 +322,7 @@ $data = mysqli_fetch_array($sql);
                                     </li>
                                     <li>
                                         <span>Telepon: </span>
-                                        <a href="#">(+62) 812 2532 1543</a>
+                                        <a href="tel:+6281225321543">(+62) 812 2532 1543</a>
                                     </li>
                                     <li>
                                         <span>Email: </span>
@@ -458,6 +448,5 @@ $data = mysqli_fetch_array($sql);
     <script src="js/main.js"></script>
 </body>
 
-<!-- login-register31:27-->
 
 </html>

@@ -255,7 +255,6 @@ if (isset($_POST["login"])) {
                     <!-- Begin Footer Shipping Area -->
                     <div class="footer-shipping pt-60 pb-55 pb-xs-25">
                         <div class="row">
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -267,9 +266,7 @@ if (isset($_POST["login"])) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
 
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -281,9 +278,7 @@ if (isset($_POST["login"])) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
 
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -295,9 +290,7 @@ if (isset($_POST["login"])) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
 
-                            <!-- Mulai Area Kotak Pengiriman Li -->
                             <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
                                 <div class="li-shipping-inner-box">
                                     <div class="shipping-icon">
@@ -309,7 +302,6 @@ if (isset($_POST["login"])) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
                         </div>
                     </div>
 
@@ -337,7 +329,7 @@ if (isset($_POST["login"])) {
                                     </li>
                                     <li>
                                         <span>Telepon: </span>
-                                        <a href="#">(+62) 812 2532 1543</a>
+                                        <a href="tel:+6281225321543">(+62) 812 2532 1543</a>
                                     </li>
                                     <li>
                                         <span>Email: </span>
@@ -462,7 +454,5 @@ if (isset($_POST["login"])) {
     <!-- Main/Activator js -->
     <script src="js/main.js"></script>
 </body>
-
-<!-- login-register31:27-->
 
 </html>

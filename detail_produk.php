@@ -4,7 +4,6 @@ session_start();
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<!-- single-product31:30-->
 
 <head>
     <meta charset="utf-8">
@@ -88,8 +87,8 @@ session_start();
                                         </li>
                                     <?php
                                     } else {
-                                        // Ambil nama user dari session atau database jika mau
-                                        $nama_user = $_SESSION['username']; // pastikan diset saat login
+                                        
+                                        $nama_user = $_SESSION['username']; 
 
                                     ?>
                                         <!-- User Icon with Dropdown -->
@@ -103,7 +102,7 @@ session_start();
                                                 </li>
                                                 <li>
                                                     <hr style="margin: 5px 0;">
-                                                </li> <!-- Garis pembatas -->
+                                                </li> 
                                                 <li>
                                                     <a href="logout.php" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
                                                         <i class="fa fa-sign-out"></i> Logout
@@ -229,7 +228,6 @@ session_start();
             <div class="container">
                 <div class="row single-product-area">
                     <div class="col-lg-5 col-md-6">
-                        <!-- Product Details Left -->
                         <div class="product-details-left">
                             <div class="product-details-images slider-navigation-1">
                                 <div class="lg-image">
@@ -239,7 +237,6 @@ session_start();
                                 </div>
                             </div>
                         </div>
-                        <!--// Product Details Left -->
                     </div>
 
                     <?php if ($data['stok'] == 0) : ?>
@@ -262,7 +259,7 @@ session_start();
                                     <p>
                                         <span><?= nl2br($data['desk']) ?></span>
                                     </p>
-                                    <p><strong>Stok tersedia:</strong> <?= $data['stok'] ?> unit</p> <!-- ✅ Tambahan -->
+                                    <p><strong>Stok tersedia:</strong> <?= $data['stok'] ?> unit</p>
                                 </div>
 
                                 <div class="single-add-to-cart">
@@ -355,7 +352,7 @@ session_start();
                                             <div class="product_desc_info">
                                                 <div class="product-review">
                                                     <h5 class="manufacturer">
-                                                        <a href="#"><?= $p['id_kategori'] ?></a> <!-- Bisa diganti nama kategori jika join -->
+                                                        <a href="#"><?= $p['id_kategori'] ?></a> 
                                                     </h5>
                                                 </div>
                                                 <h4>
@@ -400,7 +397,6 @@ session_start();
                 <!-- Begin Footer Shipping Area -->
                 <div class="footer-shipping pt-60 pb-55 pb-xs-25">
                     <div class="row">
-                        <!-- Mulai Area Kotak Pengiriman Li -->
                         <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                             <div class="li-shipping-inner-box">
                                 <div class="shipping-icon">
@@ -412,9 +408,7 @@ session_start();
                                 </div>
                             </div>
                         </div>
-                        <!-- Akhir Area Kotak Pengiriman Li -->
 
-                        <!-- Mulai Area Kotak Pengiriman Li -->
                         <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                             <div class="li-shipping-inner-box">
                                 <div class="shipping-icon">
@@ -426,9 +420,7 @@ session_start();
                                 </div>
                             </div>
                         </div>
-                        <!-- Akhir Area Kotak Pengiriman Li -->
 
-                        <!-- Mulai Area Kotak Pengiriman Li -->
                         <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
                             <div class="li-shipping-inner-box">
                                 <div class="shipping-icon">
@@ -440,9 +432,7 @@ session_start();
                                 </div>
                             </div>
                         </div>
-                        <!-- Akhir Area Kotak Pengiriman Li -->
 
-                        <!-- Mulai Area Kotak Pengiriman Li -->
                         <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
                             <div class="li-shipping-inner-box">
                                 <div class="shipping-icon">
@@ -454,7 +444,6 @@ session_start();
                                 </div>
                             </div>
                         </div>
-                        <!-- Akhir Area Kotak Pengiriman Li -->
                     </div>
                 </div>
 
@@ -482,11 +471,11 @@ session_start();
                                 </li>
                                 <li>
                                     <span>Telepon: </span>
-                                    <a href="#">(+62) 812 3456 7890</a>
+                                    <a href="tel:+6281225321543">(+62) 812 2532 1543</a>
                                 </li>
                                 <li>
                                     <span>Email: </span>
-                                    <a href="mailto:info@technozone.id">info@technozone.id</a>
+                                    <a href="mailto:electrons@cs.id">electrons@cs.id</a>
                                 </li>
                             </ul>
                         </div>
