@@ -85,8 +85,8 @@ session_start();
                         <!-- Begin Header Middle Right Area -->
                         <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                             <!-- Begin Header Middle Searchbox Area -->
-                            <form action="#" class="hm-searchbox">
-                                <select class="nice-select select-search-category">
+                            <form action="" method="GET" class="hm-searchbox">
+                                <select name="kategori" class="nice-select select-search-category">
                                     <option value="">All</option>
                                     <?php
                                     include 'admin/koneksi.php';
@@ -97,9 +97,10 @@ session_start();
                                     }
                                     ?>
                                 </select>
-                                <input type="text" placeholder="Enter your search key ..." value="<?= isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : '' ?>">
+                                <input type="text" name="keyword" placeholder="Enter your search key ..." value="<?= isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : '' ?>">
                                 <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                             </form>
+
                             <!-- Header Middle Searchbox Area End Here -->
                             <!-- Begin Header Middle Right Area -->
                             <div class="header-middle-right">
@@ -116,8 +117,8 @@ session_start();
                                         </li>
                                     <?php
                                     } else {
-
-                                        $nama_user = $_SESSION['username'];
+                                        // Ambil nama user dari session atau database jika mau
+                                        $nama_user = $_SESSION['username']; // pastikan diset saat login
 
                                     ?>
                                         <!-- User Icon with Dropdown -->
@@ -131,7 +132,7 @@ session_start();
                                                 </li>
                                                 <li>
                                                     <hr style="margin: 5px 0;">
-                                                </li>
+                                                </li> <!-- Garis pembatas -->
                                                 <li>
                                                     <a href="logout.php" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
                                                         <i class="fa fa-sign-out"></i> Logout
@@ -253,7 +254,7 @@ session_start();
                         <!-- Begin Li's Banner Area -->
                         <div class="single-banner shop-page-banner">
                             <a href="#">
-                                <img src="images/bg-banner/2.jpg" alt="Li's Static Banner">
+                                <img src="images/bg-banner/1.jpg" alt="Li's Static Banner">
                             </a>
                         </div>
                         <!-- Li's Banner Area End Here -->
@@ -298,6 +299,7 @@ session_start();
                                             <?php
                                             include 'admin/koneksi.php';
 
+                                            // Ambil parameter pencarian dan sorting
                                             $kategori = isset($_GET['kategori']) ? $_GET['kategori'] : '';
                                             $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                             $page     = isset($_GET['page']) ? (int) $_GET['page'] : 1;
@@ -305,6 +307,7 @@ session_start();
                                             $offset   = ($page - 1) * $limit;
                                             $sort     = isset($_GET['sort']) ? $_GET['sort'] : 'default';
 
+                                            // Tentukan urutan sorting
                                             switch ($sort) {
                                                 case 'name-asc':
                                                     $orderBy = 'ORDER BY p.nm_produk ASC';
@@ -319,11 +322,16 @@ session_start();
                                                     $orderBy = 'ORDER BY p.harga DESC';
                                                     break;
                                                 default:
-                                                    $orderBy = 'ORDER BY p.id_produk DESC';
+                                                    $orderBy = 'ORDER BY p.id_produk DESC'; // default terbaru
                                                     break;
                                             }
 
-                                            $countSql = "SELECT COUNT(*) AS total FROM tb_produk p JOIN tb_kategori k ON p.id_kategori = k.id_kategori WHERE 1=1";
+                                            // Hitung total data
+                                            $countSql = "SELECT COUNT(*) AS total 
+    FROM tb_produk p 
+    JOIN tb_kategori k ON p.id_kategori = k.id_kategori 
+    WHERE 1=1
+";
 
                                             if (!empty($kategori)) {
                                                 $countSql .= " AND p.id_kategori = '" . mysqli_real_escape_string($koneksi, $kategori) . "'";
@@ -336,7 +344,12 @@ session_start();
                                             $totalData = mysqli_fetch_assoc($countQuery)['total'];
                                             $totalPages = ceil($totalData / $limit);
 
-                                            $sql = "SELECT p.*, k.nm_kategori FROM tb_produk p JOIN tb_kategori k ON p.id_kategori = k.id_kategori WHERE 1=1";
+                                            // Ambil data produk
+                                            $sql = "SELECT p.*, k.nm_kategori 
+    FROM tb_produk p 
+    JOIN tb_kategori k ON p.id_kategori = k.id_kategori 
+    WHERE 1=1
+";
 
                                             if (!empty($kategori)) {
                                                 $sql .= " AND p.id_kategori = '" . mysqli_real_escape_string($koneksi, $kategori) . "'";
@@ -400,6 +413,7 @@ session_start();
                                             <?php
                                             include 'admin/koneksi.php';
 
+                                            // Ambil parameter pencarian dan sorting
                                             $kategori = isset($_GET['kategori']) ? $_GET['kategori'] : '';
                                             $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                                             $page     = isset($_GET['page']) ? (int) $_GET['page'] : 1;
@@ -407,6 +421,7 @@ session_start();
                                             $offset   = ($page - 1) * $limit;
                                             $sort     = isset($_GET['sort']) ? $_GET['sort'] : 'default';
 
+                                            // Tentukan urutan sorting
                                             switch ($sort) {
                                                 case 'name-asc':
                                                     $orderBy = 'ORDER BY p.nm_produk ASC';
@@ -425,7 +440,12 @@ session_start();
                                                     break;
                                             }
 
-                                            $countSql = "SELECT COUNT(*) AS total FROM tb_produk p JOIN tb_kategori k ON p.id_kategori = k.id_kategori WHERE 1=1";
+                                            // Hitung total data
+                                            $countSql = "SELECT COUNT(*) AS total 
+    FROM tb_produk p 
+    JOIN tb_kategori k ON p.id_kategori = k.id_kategori 
+    WHERE 1=1
+";
 
                                             if (!empty($kategori)) {
                                                 $countSql .= " AND p.id_kategori = '" . mysqli_real_escape_string($koneksi, $kategori) . "'";
@@ -438,7 +458,12 @@ session_start();
                                             $totalData = mysqli_fetch_assoc($countQuery)['total'];
                                             $totalPages = ceil($totalData / $limit);
 
-                                            $sql = "SELECT p.*, k.nm_kategori FROM tb_produk p JOIN tb_kategori k ON p.id_kategori = k.id_kategori WHERE 1=1";
+                                            // Ambil data produk
+                                            $sql = "SELECT p.*, k.nm_kategori 
+    FROM tb_produk p 
+    JOIN tb_kategori k ON p.id_kategori = k.id_kategori 
+    WHERE 1=1
+";
 
                                             if (!empty($kategori)) {
                                                 $sql .= " AND p.id_kategori = '" . mysqli_real_escape_string($koneksi, $kategori) . "'";
@@ -535,7 +560,7 @@ session_start();
                                 <h2>Filter By</h2>
                             </div>
                             <!-- btn-clear-all start -->
-                            <button class="btn-clear-all mb-sm-30 mb-xs-30">Clear all</button>
+                            <button class="btn-clear-all mb-sm-30 mb-xs-30" onclick="window.location.href='<?= basename($_SERVER['PHP_SELF'])?>'">Clear all</button>
                             <!-- btn-clear-all end -->
                             <!-- filter-sub-area start -->
                             <div class="filter-sub-area pt-sm-10 pt-xs-10">
