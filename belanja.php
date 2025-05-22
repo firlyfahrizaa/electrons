@@ -777,7 +777,7 @@ session_start();
                                     <div class="product-details-left">
                                         <div class="product-details-images slider-navigation-1">
                                             <div class="lg-image">
-                                                <img src="produk_img/" alt="produk img" id="modal-gambar">
+                                                <img src="admin/produk_img/" alt="produk img" id="modal-gambar">
                                             </div>
                                         </div>
                                     </div>

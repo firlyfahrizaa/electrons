@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Detail Produk - Technozone</title>
+    <title>Detail Produk - electrons</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -219,8 +219,7 @@ session_start();
 
         $id = $_GET['id'];
         $query = mysqli_query($koneksi, "SELECT p.*, k.nm_kategori FROM tb_produk p 
-                                LEFT JOIN tb_kategori k ON p.id_kategori = k.id_kategori 
-                                WHERE id_produk='$id'");
+        LEFT JOIN tb_kategori k ON p.id_kategori = k.id_kategori WHERE id_produk='$id'");
         $data = mysqli_fetch_assoc($query);
         ?>
 
@@ -231,8 +230,10 @@ session_start();
                         <div class="product-details-left">
                             <div class="product-details-images slider-navigation-1">
                                 <div class="lg-image">
-                                    <a class="popup-img venobox vbox-item" href="admin/produk_img/<?= $data['gambar'] ?>" data-gall="myGallery">
-                                        <img src="admin/produk_img/<?= $data['gambar'] ?>" alt="<?= $data['nm_produk'] ?>" width="300" height="300">
+                                    <a class="popup-img venobox vbox-item" href="admin/produk_img/<?= $data['gambar'] ?>" 
+                                    data-gall="myGallery">
+                                        <img src="admin/produk_img/<?= $data['gambar'] ?>" alt="<?= $data['nm_produk'] ?>" 
+                                        width="300" height="300">
                                     </a>
                                 </div>
                             </div>
@@ -246,14 +247,14 @@ session_start();
                         </script>
                     <?php endif; ?>
 
-
                     <div class="col-lg-7 col-md-6">
                         <div class="product-details-view-content p-2">
                             <div class="product-info">
                                 <h2><?= $data['nm_produk'] ?></h2>
                                 <span class="product-details-ref">Kategori: <?= $data['nm_kategori'] ?></span>
                                 <div class="price-box pt-20">
-                                    <span class="new-price new-price-2">Rp<?= number_format($data['harga'], 0, ',', '.') ?></span>
+                                    <span class="new-price new-price-2">
+                                        Rp<?= number_format($data['harga'], 0, ',', '.') ?></span>
                                 </div>
                                 <div class="product-desc">
                                     <p>
@@ -271,14 +272,14 @@ session_start();
                                         <div class="quantity">
                                             <label>Jumlah</label>
                                             <div class="cart-plus-minus">
-                                                <input name="jumlah" class="cart-plus-minus-box" value="1" type="number" min="1" max="<?= $data['stok'] ?>">
+                                                <input name="jumlah" class="cart-plus-minus-box" value="1" 
+                                                type="number" min="1" max="<?= $data['stok'] ?>">
                                                 <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                 <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                             </div>
                                         </div>
                                         <button class="add-to-cart" type="submit">Beli Sekarang</button>
                                     </form>
-
                                 </div>
                                 <div class="product-additional-info pt-25">
                                     <div class="product-social-sharing pt-25">
@@ -337,7 +338,9 @@ session_start();
                             include 'admin/koneksi.php';
                             $id_produk = $_GET['id'];
 
-                            $query_produk_lain = mysqli_query($koneksi, "SELECT * FROM tb_produk WHERE id_produk != '$id_produk' ORDER BY RAND() LIMIT 6");
+                            $query_produk_lain = mysqli_query($koneksi, 
+                            "SELECT * FROM tb_produk WHERE id_produk != '$id_produk' 
+                            ORDER BY RAND() LIMIT 6");
                             while ($p = mysqli_fetch_array($query_produk_lain)) {
                             ?>
                                 <div class="col-lg-12">
@@ -345,7 +348,8 @@ session_start();
                                     <div class="single-product-wrap">
                                         <div class="product-image">
                                             <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">
-                                                <img src="admin/produk_img/<?= $p['gambar'] ?>" alt="<?= $p['nm_produk'] ?>" width="300" height="300">
+                                                <img src="admin/produk_img/<?= $p['gambar'] ?>" alt="<?= $p['nm_produk'] ?>" 
+                                                width="300" height="300">
                                             </a>
                                         </div>
                                         <div class="product_desc">
