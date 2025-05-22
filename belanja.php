@@ -683,7 +683,7 @@ session_start();
                                         </li>
                                         <li>
                                             <span>Telepon: </span>
-                                            <a href="#">(+62) 812 2532 1543</a>
+                                            <a href="tel:+6281225321543">(+62) 812 2532 1543</a>
                                         </li>
                                         <li>
                                             <span>Email: </span>
@@ -834,7 +834,7 @@ session_start();
                     </div>
                 </div>
             </div>
-            
+
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
             <script>

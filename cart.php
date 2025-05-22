@@ -367,8 +367,6 @@ session_start();
                                         }
 
                                         $username = $_SESSION['username'];
-
-
                                         $query_user = mysqli_query($koneksi, "SELECT id_user FROM tb_user WHERE username = '$username'");
                                         $data_user = mysqli_fetch_assoc($query_user);
                                         $id_user = $data_user['id_user'];
