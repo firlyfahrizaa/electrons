@@ -89,8 +89,8 @@ session_start();
                                         </li>
                                     <?php
                                     } else {
-                                        
-                                        $nama_user = $_SESSION['username']; 
+
+                                        $nama_user = $_SESSION['username'];
 
                                     ?>
                                         <!-- User Icon with Dropdown -->
@@ -224,6 +224,43 @@ session_start();
                         <?php
                         include "admin/koneksi.php";
 
+                        if (isset($_POST['update_cart'])) {
+                            if (!isset($_SESSION['id_user'])) {
+                                echo "<script>alert('User tidak ditemukan!'); window.location='cart.php';</script>";
+                                exit;
+                            }
+
+                            $id_user = $_SESSION['id_user'];
+
+                            
+                            if (isset($_POST['qty']) && is_array($_POST['qty'])) {
+                                foreach ($_POST['qty'] as $id_pesanan => $qty) {
+                                    $qty = (int)$qty;
+                                    if ($qty < 1) $qty = 1;
+
+                                    
+                                    $query = mysqli_query($koneksi, "SELECT pr.harga 
+                FROM tb_pesanan p 
+                JOIN tb_produk pr ON p.id_produk = pr.id_produk 
+                WHERE p.id_pesanan = '$id_pesanan' AND p.id_user = '$id_user'
+            ");
+                                    $data = mysqli_fetch_assoc($query);
+                                    $harga = $data['harga'];
+                                    $total = $qty * $harga;
+
+                                    // Update qty dan total
+                                    mysqli_query($koneksi, "UPDATE tb_pesanan 
+                SET qty = '$qty', total = '$total' 
+                WHERE id_pesanan = '$id_pesanan' AND id_user = '$id_user'
+            ");
+                                }
+                            }
+
+                            echo "<script>alert('Keranjang berhasil diperbarui.'); window.location='cart.php';</script>";
+                            exit;
+                        }
+
+
                         if (isset($_POST['checkout'])) {
                             if (!isset($_SESSION['id_user'])) {
                                 echo "<script>alert('User tidak ditemukan!'); window.location='cart.php';</script>";
@@ -232,7 +269,6 @@ session_start();
 
                             $id_user = $_SESSION['id_user'];
 
-                            // Ambil data pesanan user
                             $query_pesanan = mysqli_query($koneksi, "
                                 SELECT p.*, pr.harga 
                                 FROM tb_pesanan p
@@ -245,7 +281,7 @@ session_start();
                                 exit;
                             }
 
-                            
+
                             $subtotal = 0;
                             $items = [];
                             while ($row = mysqli_fetch_assoc($query_pesanan)) {
@@ -258,7 +294,7 @@ session_start();
                                 ];
                             }
 
-                            
+
                             $diskon = 0;
                             if ($subtotal > 3000000) {
                                 $diskon = 0.07 * $subtotal;
@@ -267,13 +303,13 @@ session_start();
                             }
                             $total_bayar = $subtotal - $diskon;
 
-                            
+
                             $result = mysqli_query($koneksi, "SELECT MAX(RIGHT(id_jual, 3)) AS max_id FROM tb_jual");
                             $row = mysqli_fetch_assoc($result);
                             $last_id = $row['max_id'];
                             $next_id = 'T' . str_pad((int)$last_id + 1, 3, '0', STR_PAD_LEFT);
 
-                            
+
                             $tgl = date('Y-m-d H:i:s');
                             $query_insert_jual = mysqli_query($koneksi, "INSERT INTO tb_jual (id_jual, id_user, tgl_jual, total, diskon) 
                                 VALUES ('$next_id', '$id_user', '$tgl', '$total_bayar', '$diskon')");
@@ -283,7 +319,7 @@ session_start();
                                 exit;
                             }
 
-                            
+
                             foreach ($items as $item) {
                                 $query_dtl = mysqli_query($koneksi, "INSERT INTO tb_jualdtl (id_jual, id_produk, qty, harga) 
                                     VALUES ('$next_id', '{$item['id_produk']}', '{$item['qty']}', '{$item['harga']}')");
@@ -294,7 +330,7 @@ session_start();
                                 }
                             }
 
-                            
+
                             $hapus = mysqli_query($koneksi, "DELETE FROM tb_pesanan WHERE id_user = '$id_user'");
 
                             if (!$hapus) {
@@ -325,7 +361,6 @@ session_start();
                                         <?php
                                         include 'admin/koneksi.php';
 
-                                        // Cek apakah user login
                                         if (!isset($_SESSION['username'])) {
                                             echo "<tr><td colspan='6'>Silakan login terlebih dahulu.</td></tr>";
                                             exit;
@@ -333,15 +368,14 @@ session_start();
 
                                         $username = $_SESSION['username'];
 
-                                        
+
                                         $query_user = mysqli_query($koneksi, "SELECT id_user FROM tb_user WHERE username = '$username'");
                                         $data_user = mysqli_fetch_assoc($query_user);
                                         $id_user = $data_user['id_user'];
 
-                                        
+
                                         $query_pesanan = mysqli_query($koneksi, "SELECT p.*, pr.nm_produk, pr.gambar, pr.harga FROM tb_pesanan p
-                                        JOIN tb_produk pr ON p.id_produk = pr.id_produk WHERE p.id_user = '$id_user'
-");
+                                        JOIN tb_produk pr ON p.id_produk = pr.id_produk WHERE p.id_user = '$id_user'");
 
                                         if (mysqli_num_rows($query_pesanan) > 0) {
                                             while ($row = mysqli_fetch_assoc($query_pesanan)) {
@@ -360,7 +394,7 @@ session_start();
             <td class='quantity'>
                 <label>Quantity</label>
                 <div class='cart-plus-minus'>
-                    <input class='cart-plus-minus-box' value='{$row['qty']}' type='text' readonly>
+                    <input name='qty[{$row['id_pesanan']}]' class='cart-plus-minus-box' value='{$row['qty']}' type='number' min='1'>
                     <div class='dec qtybutton'><i class='fa fa-angle-down'></i></div>
                     <div class='inc qtybutton'><i class='fa fa-angle-up'></i></div>
                 </div>
@@ -392,14 +426,14 @@ session_start();
                                     <div class="cart-page-total">
                                         <h2>Total Pesanan</h2>
                                         <?php
-                                        
+
                                         $subtotal = 0;
-                                        mysqli_data_seek($query_pesanan, 0); 
+                                        mysqli_data_seek($query_pesanan, 0);
                                         while ($row = mysqli_fetch_assoc($query_pesanan)) {
                                             $subtotal += $row['qty'] * $row['harga'];
                                         }
 
-                                        
+
                                         $diskon = 0;
                                         if ($subtotal > 3000000) {
                                             $diskon = 0.07 * $subtotal;
