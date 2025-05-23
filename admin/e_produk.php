@@ -233,7 +233,7 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="col-12">
                                     <label for="harga" class="form-label">Harga</label>
-                                    <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="<?php echo $data['harga']; ?> " required>
+                                    <input type="number" class="form-control" id="harga" name="harga" value="<?php echo $data['harga']; ?>" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="stok" class="form-label">Stok</label>
