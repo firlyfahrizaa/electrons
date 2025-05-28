@@ -272,16 +272,15 @@ session_start();
                             }
 
 
-                            foreach ($items as $item) {
-                                $query_dtl = mysqli_query($koneksi, "INSERT INTO tb_jualdtl (id_jual, id_produk, qty, harga) 
-                                    VALUES ('$next_id', '{$item['id_produk']}', '{$item['qty']}', '{$item['harga']}')");
+                            foreach ($items as $item) {$query_dtl = mysqli_query($koneksi, "INSERT INTO tb_jualdtl (id_jual, id_produk, qty, harga)
+                            VALUES ('$next_id', '{$item['id_produk']}', '{$item['qty']}', '{$item['harga']}')
+                            ON DUPLICATE KEY UPDATE qty = qty + VALUES(qty), harga = VALUES(harga)");
 
-                                if (!$query_dtl) {
-                                    echo "<script>alert('Gagal menyimpan detail penjualan!'); window.location='cart.php';</script>";
-                                    exit;
-                                }
-                            }
-
+    if (!$query_dtl) {
+        echo "<script>alert('Gagal menyimpan detail penjualan!'); window.location='cart.php';</script>";
+        exit;
+    }
+}
 
                             $hapus = mysqli_query($koneksi, "DELETE FROM tb_pesanan WHERE id_user = '$id_user'");
 
