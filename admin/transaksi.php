@@ -178,7 +178,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
         JOIN tb_user u ON j.id_user = u.id_user";
 
         if (!empty($kategori_filter)) {
-            $sql .= " JOIN tb_jualdtl jd ON j.id_jual = jd.id_jual
+            $sql .= "JOIN tb_jualdtl jd ON j.id_jual = jd.id_jual
               JOIN tb_produk p ON jd.id_produk = p.id_produk
               WHERE p.id_kategori = '$kategori_filter'";
         }
