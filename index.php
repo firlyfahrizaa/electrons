@@ -270,8 +270,8 @@ session_start();
                                     <div class="slider-progress"></div>
                                     <div class="slider-content">
                                         <h5>Promo Bulanan <span>-30% Diskon</span> untuk Smartphone</h5>
-                                        <h2>Samsung Galaxy S23 Ultra</h2>
-                                        <h3>Mulai dari <span>Rp15.000.000</span></h3>
+                                        <h2>Samsung Galaxy A23</h2>
+                                        <h3>Mulai dari <span>Rp2.500.000</span></h3>
                                         <div class="default-btn slide-btn">
                                             <a class="links" href="belanja.php">Belanja Sekarang</a>
                                         </div>
@@ -282,8 +282,8 @@ session_start();
                                     <div class="slider-progress"></div>
                                     <div class="slider-content">
                                         <h5>Promo Spesial <span>Tablet & Laptop</span></h5>
-                                        <h2>Apple iPad Pro & MacBook Air</h2>
-                                        <h3>Harga mulai <span>Rp12.000.000</span></h3>
+                                        <h2>Apple iPad Pro & MacBook Air M1</h2>
+                                        <h3>Harga mulai <span>Rp13.000.000</span></h3>
                                         <div class="default-btn slide-btn">
                                             <a class="links" href="belanja.php">Belanja Sekarang</a>
                                         </div>
