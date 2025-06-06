@@ -133,7 +133,7 @@ session_start();
                                                 </li>
                                                 <li>
                                                     <hr style="margin: 5px 0;">
-                                                </li> <!-- Garis pembatas -->
+                                                </li>
                                                 <li>
                                                     <a href="logout.php" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
                                                         <i class="fa fa-sign-out"></i> Logout

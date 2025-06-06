@@ -269,7 +269,7 @@ session_start();
                                 <div class="single-slide align-center-left animation-style-01 bg-1">
                                     <div class="slider-progress"></div>
                                     <div class="slider-content">
-                                        <h5>Promo Mingguan <span>-20% Diskon</span> untuk Smartphone</h5>
+                                        <h5>Promo Bulanan <span>-30% Diskon</span> untuk Smartphone</h5>
                                         <h2>Samsung Galaxy S23 Ultra</h2>
                                         <h3>Mulai dari <span>Rp15.000.000</span></h3>
                                         <div class="default-btn slide-btn">
@@ -412,7 +412,7 @@ session_start();
                         <div class="li-static-home-content">
                             <p>Promo Mingguan <span>-20% Diskon</span> Produk Pilihan</p>
                             <h2>Produk Unggulan</h2>
-                            <h2>Smartphone & Aksesori Technozone</h2>
+                            <h2>Smartphone & Aksesori electrons</h2>
                             <p class="schedule">
                                 Mulai dari
                                 <span> Rp1.500.000</span>
