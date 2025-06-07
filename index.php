@@ -282,8 +282,8 @@ session_start();
                                     <div class="slider-progress"></div>
                                     <div class="slider-content">
                                         <h5>Promo Spesial <span>Tablet & Laptop</span></h5>
-                                        <h2>Apple iPad Pro & MacBook Air M1</h2>
-                                        <h3>Harga mulai <span>Rp13.000.000</span></h3>
+                                        <h2>Samsung Galaxy Tab S10 Fe</h2>
+                                        <h3>Harga mulai <span>Rp8.000.000</span></h3>
                                         <div class="default-btn slide-btn">
                                             <a class="links" href="belanja.php">Belanja Sekarang</a>
                                         </div>
@@ -294,8 +294,8 @@ session_start();
                                     <div class="slider-progress"></div>
                                     <div class="slider-content">
                                         <h5>Diskon Eksklusif <span>-15% Off</span></h5>
-                                        <h2>Laptop Gaming ASUS ROG</h2>
-                                        <h3>Mulai dari <span>Rp18.499.000</span></h3>
+                                        <h2>Laptop Asus Zenbook UX8406 ULTRA 9</h2>
+                                        <h3>Mulai dari <span>Rp31.000.000</span></h3>
                                         <div class="default-btn slide-btn">
                                             <a class="links" href="belanja.php">Belanja Sekarang</a>
                                         </div>
@@ -415,7 +415,7 @@ session_start();
                             <h2>Smartphone & Aksesori electrons</h2>
                             <p class="schedule">
                                 Mulai dari
-                                <span> Rp1.500.000</span>
+                                <span> Rp3.500.000</span>
                             </p>
                             <div class="default-btn">
                                 <a href="belanja.php" class="links">Belanja Sekarang</a>
