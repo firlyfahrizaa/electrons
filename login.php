@@ -4,24 +4,24 @@ session_start();
 require "admin/koneksi.php";
 
 if (isset($_POST["login"])) {
-  $username = $_POST["username"];
-  $password = $_POST["password"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-  $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
+    $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
 
-  if (mysqli_num_rows($result) === 1) {
-    $row = mysqli_fetch_assoc($result);
-    if (password_verify($password, $row["password"])) {
-      $_SESSION["login"] = true;
-      $_SESSION["username"] = $row["username"];
-      $_SESSION["id_user"] = $row["id_user"];
-      header("refresh:0, index.php");
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row["password"])) {
+            $_SESSION["login"] = true;
+            $_SESSION["username"] = $row["username"];
+            $_SESSION["id_user"] = $row["id_user"];
+            header("refresh:0, index.php");
+        } else {
+            echo "<script>alert('Username atau password yang anda masukkan salah')</script>";
+        }
     } else {
-      echo "<script>alert('Username atau password yang anda masukkan salah')</script>";
+        echo "<script>alert('Username atau password yang anda masukkan salah')</script>";
     }
-  } else {
-    echo "<script>alert('Username atau password yang anda masukkan salah')</script>";
-  }
 }
 ?>
 
@@ -307,22 +307,22 @@ if (isset($_POST["login"])) {
                                     <h3 class="footer-block-title">Ikuti Kami</h3>
                                     <ul class="social-link">
                                         <li class="twitter">
-                                            <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                            <a href="https://x.com/firlyfahriza" data-toggle="tooltip" target="_blank" title="Twitter">
                                                 <i class="fa fa-twitter"></i>
                                             </a>
                                         </li>
                                         <li class="facebook">
-                                            <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                            <a href="https://web.facebook.com/firlyfahriza.fahriza/" data-toggle="tooltip" target="_blank" title="Facebook">
                                                 <i class="fa fa-facebook"></i>
                                             </a>
                                         </li>
                                         <li class="youtube">
-                                            <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                            <a href="https://www.youtube.com/@firlyfahriza" data-toggle="tooltip" target="_blank" title="Youtube">
                                                 <i class="fa fa-youtube"></i>
                                             </a>
                                         </li>
                                         <li class="instagram">
-                                            <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                            <a href="https://www.instagram.com/firlyfahriza" data-toggle="tooltip" target="_blank" title="Instagram">
                                                 <i class="fa fa-instagram"></i>
                                             </a>
                                         </li>

@@ -761,22 +761,22 @@ session_start();
                                         <h3 class="footer-block-title">Ikuti Kami</h3>
                                         <ul class="social-link">
                                             <li class="twitter">
-                                                <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                                <a href="https://x.com/firlyfahriza" data-toggle="tooltip" target="_blank" title="Twitter">
                                                     <i class="fa fa-twitter"></i>
                                                 </a>
                                             </li>
                                             <li class="facebook">
-                                                <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                                <a href="https://web.facebook.com/firlyfahriza.fahriza/" data-toggle="tooltip" target="_blank" title="Facebook">
                                                     <i class="fa fa-facebook"></i>
                                                 </a>
                                             </li>
                                             <li class="youtube">
-                                                <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                                <a href="https://www.youtube.com/@firlyfahriza" data-toggle="tooltip" target="_blank" title="Youtube">
                                                     <i class="fa fa-youtube"></i>
                                                 </a>
                                             </li>
                                             <li class="instagram">
-                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                                <a href="https://www.instagram.com/firlyfahriza" data-toggle="tooltip" target="_blank" title="Instagram">
                                                     <i class="fa fa-instagram"></i>
                                                 </a>
                                             </li>
@@ -872,9 +872,9 @@ session_start();
                                             <div class="product-additional-info pt-25">
                                                 <div class="product-social-sharing pt-25">
                                                     <ul>
-                                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                                        <li class="facebook"><a href="https://web.facebook.com/firlyfahriza.fahriza/"><i class="fa fa-facebook"></i>Facebook</a></li>
+                                                        <li class="twitter"><a href="https://x.com/firlyfahriza"><i class="fa fa-twitter"></i>Twitter</a></li>
+                                                        <li class="instagram"><a href="https://www.instagram.com/firlyfahriza/"><i class="fa fa-instagram"></i>Instagram</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

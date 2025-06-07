@@ -161,7 +161,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                    <li class="breadcrumb-item">Transaksi</li>
+                    <li class="breadcrumb-item"><a href="transaksi.php">Transaksi</a></li>
                     <li class="breadcrumb-item active">Detail Jual</li>
                 </ol>
             </nav>
