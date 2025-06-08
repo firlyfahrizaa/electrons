@@ -87,8 +87,8 @@ session_start();
                                         </li>
                                     <?php
                                     } else {
-                                        
-                                        $nama_user = $_SESSION['username']; 
+
+                                        $nama_user = $_SESSION['username'];
 
                                     ?>
                                         <!-- User Icon with Dropdown -->
@@ -102,7 +102,7 @@ session_start();
                                                 </li>
                                                 <li>
                                                     <hr style="margin: 5px 0;">
-                                                </li> 
+                                                </li>
                                                 <li>
                                                     <a href="logout.php" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
                                                         <i class="fa fa-sign-out"></i> Logout
@@ -144,7 +144,7 @@ session_start();
                                                 include 'admin/koneksi.php';
 
                                                 $username = $_SESSION['username'];
-                                                $query_user = mysqli_query ($koneksi, "SELECT * FROM tb_user WHERE username = '$username'");
+                                                $query_user = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username = '$username'");
                                                 $data_user = mysqli_fetch_assoc($query_user);
                                                 $id_user = $data_user['id_user'];
 
@@ -282,10 +282,10 @@ session_start();
                         <div class="product-details-left">
                             <div class="product-details-images slider-navigation-1">
                                 <div class="lg-image">
-                                    <a class="popup-img venobox vbox-item" href="admin/produk_img/<?= $data['gambar'] ?>" 
-                                    data-gall="myGallery">
-                                        <img src="admin/produk_img/<?= $data['gambar'] ?>" alt="<?= $data['nm_produk'] ?>" 
-                                        width="300" height="300">
+                                    <a class="popup-img venobox vbox-item" href="admin/produk_img/<?= $data['gambar'] ?>"
+                                        data-gall="myGallery">
+                                        <img src="admin/produk_img/<?= $data['gambar'] ?>" alt="<?= $data['nm_produk'] ?>"
+                                            width="300" height="300">
                                     </a>
                                 </div>
                             </div>
@@ -324,8 +324,8 @@ session_start();
                                         <div class="quantity">
                                             <label>Jumlah</label>
                                             <div class="cart-plus-minus">
-                                                <input name="jumlah" class="cart-plus-minus-box" value="1" 
-                                                type="number" min="1" max="<?= $data['stok'] ?>">
+                                                <input name="jumlah" class="cart-plus-minus-box" value="1"
+                                                    type="number" min="1" max="<?= $data['stok'] ?>">
                                                 <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                 <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                             </div>
@@ -389,9 +389,11 @@ session_start();
                             <?php
                             include 'admin/koneksi.php';
                             $id_produk = $_GET['id'];
-                            $query_produk_lain = mysqli_query($koneksi, 
-                            "SELECT * FROM tb_produk WHERE id_produk != '$id_produk' 
-                            ORDER BY RAND() LIMIT 6");
+                            $query_produk_lain = mysqli_query(
+                                $koneksi,
+                                "SELECT * FROM tb_produk WHERE id_produk != '$id_produk' 
+                            ORDER BY RAND() LIMIT 6"
+                            );
                             while ($p = mysqli_fetch_array($query_produk_lain)) {
                             ?>
                                 <div class="col-lg-12">
@@ -399,15 +401,15 @@ session_start();
                                     <div class="single-product-wrap">
                                         <div class="product-image">
                                             <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">
-                                                <img src="admin/produk_img/<?= $p['gambar'] ?>" alt="<?= $p['nm_produk'] ?>" 
-                                                width="300" height="300">
+                                                <img src="admin/produk_img/<?= $p['gambar'] ?>" alt="<?= $p['nm_produk'] ?>"
+                                                    width="300" height="300">
                                             </a>
                                         </div>
                                         <div class="product_desc">
                                             <div class="product_desc_info">
                                                 <div class="product-review">
                                                     <h5 class="manufacturer">
-                                                        <a href="#"><?= $p['id_kategori'] ?></a> 
+                                                        <a href="#"><?= $p['id_kategori'] ?></a>
                                                     </h5>
                                                 </div>
                                                 <h4>
@@ -552,22 +554,22 @@ session_start();
                                 <h3 class="footer-block-title">Ikuti Kami</h3>
                                 <ul class="social-link">
                                     <li class="twitter">
-                                        <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                        <a href="https://x.com/firlyfahriza" data-toggle="tooltip" target="_blank" title="Twitter">
                                             <i class="fa fa-twitter"></i>
                                         </a>
                                     </li>
                                     <li class="facebook">
-                                        <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                        <a href="https://web.facebook.com/firlyfahriza.fahriza/" data-toggle="tooltip" target="_blank" title="Facebook">
                                             <i class="fa fa-facebook"></i>
                                         </a>
                                     </li>
                                     <li class="youtube">
-                                        <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                        <a href="https://www.youtube.com/@firlyfahriza" data-toggle="tooltip" target="_blank" title="Youtube">
                                             <i class="fa fa-youtube"></i>
                                         </a>
                                     </li>
                                     <li class="instagram">
-                                        <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                        <a href="https://www.instagram.com/firlyfahriza" data-toggle="tooltip" target="_blank" title="Instagram">
                                             <i class="fa fa-instagram"></i>
                                         </a>
                                     </li>
