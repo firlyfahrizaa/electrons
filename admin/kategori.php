@@ -21,7 +21,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kategori Produk - electrons Admin</title>
+  <title>Kategori - electrons Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 

@@ -184,13 +184,13 @@ session_start();
 
                             $id_user = $_SESSION['id_user'];
 
-                            
+
                             if (isset($_POST['qty']) && is_array($_POST['qty'])) {
                                 foreach ($_POST['qty'] as $id_pesanan => $qty) {
                                     $qty = (int)$qty;
                                     if ($qty < 1) $qty = 1;
 
-                                    
+
                                     $query = mysqli_query($koneksi, "SELECT pr.harga 
                 FROM tb_pesanan p 
                 JOIN tb_produk pr ON p.id_produk = pr.id_produk 
@@ -272,15 +272,16 @@ session_start();
                             }
 
 
-                            foreach ($items as $item) {$query_dtl = mysqli_query($koneksi, "INSERT INTO tb_jualdtl (id_jual, id_produk, qty, harga)
+                            foreach ($items as $item) {
+                                $query_dtl = mysqli_query($koneksi, "INSERT INTO tb_jualdtl (id_jual, id_produk, qty, harga)
                             VALUES ('$next_id', '{$item['id_produk']}', '{$item['qty']}', '{$item['harga']}')
                             ON DUPLICATE KEY UPDATE qty = qty + VALUES(qty), harga = VALUES(harga)");
 
-    if (!$query_dtl) {
-        echo "<script>alert('Gagal menyimpan detail penjualan!'); window.location='cart.php';</script>";
-        exit;
-    }
-}
+                                if (!$query_dtl) {
+                                    echo "<script>alert('Gagal menyimpan detail penjualan!'); window.location='cart.php';</script>";
+                                    exit;
+                                }
+                            }
 
                             $hapus = mysqli_query($koneksi, "DELETE FROM tb_pesanan WHERE id_user = '$id_user'");
 
@@ -525,22 +526,22 @@ session_start();
                                     <h3 class="footer-block-title">Ikuti Kami</h3>
                                     <ul class="social-link">
                                         <li class="twitter">
-                                            <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                            <a href="https://x.com/firlyfahriza" data-toggle="tooltip" target="_blank" title="Twitter">
                                                 <i class="fa fa-twitter"></i>
                                             </a>
                                         </li>
                                         <li class="facebook">
-                                            <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                            <a href="https://web.facebook.com/firlyfahriza.fahriza/" data-toggle="tooltip" target="_blank" title="Facebook">
                                                 <i class="fa fa-facebook"></i>
                                             </a>
                                         </li>
                                         <li class="youtube">
-                                            <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                            <a href="https://www.youtube.com/@firlyfahriza" data-toggle="tooltip" target="_blank" title="Youtube">
                                                 <i class="fa fa-youtube"></i>
                                             </a>
                                         </li>
                                         <li class="instagram">
-                                            <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                            <a href="https://www.instagram.com/firlyfahriza" data-toggle="tooltip" target="_blank" title="Instagram">
                                                 <i class="fa fa-instagram"></i>
                                             </a>
                                         </li>
