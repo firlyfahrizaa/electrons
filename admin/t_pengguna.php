@@ -132,7 +132,7 @@ if (isset($_POST['simpan'])) {
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link " href="index.php">
+    <a class="nav-link collapsed" href="index.php">
       <i class="bi bi-house"></i>
       <span>Beranda</span>
     </a>
@@ -174,7 +174,7 @@ if (isset($_POST['simpan'])) {
   </li><!-- End Laporan Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pengguna.php">
+    <a class="nav-link" href="pengguna.php">
       <i class="bi bi-person-circle"></i>
       <span>Pengguna</span>
     </a>
