@@ -102,7 +102,7 @@ if (isset($_POST['simpan'])) {
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Firly Fahriza</h6>
+              <h6><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest'; ?></h6>
               <span>Admin</span>
             </li>
             <li>
