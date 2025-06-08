@@ -202,7 +202,7 @@ session_start();
                                                 <p class="minicart-total">TOTAL BAYAR: <span>Rp<?= number_format($total_bayar, 0, ',', '.'); ?></span></p>
                                                 <div class="minicart-button">
                                                     <a href="cart.php" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                        <span>View Full Cart</span>
+                                                        <span>Lihat Keranjang</span>
                                                     </a>
                                                     <form method="POST" action="cart.php">
                                                         <input type="hidden" name="checkout" value="1">
