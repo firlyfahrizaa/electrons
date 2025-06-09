@@ -269,10 +269,27 @@ session_start();
         <?php
         include 'admin/koneksi.php'; // koneksi ke database
 
-        $id = $_GET['id'];
-        $query = mysqli_query($koneksi, "SELECT p.*, k.nm_kategori FROM tb_produk p 
-        LEFT JOIN tb_kategori k ON p.id_kategori = k.id_kategori WHERE id_produk='$id'");
-        $data = mysqli_fetch_assoc($query);
+        // Cek apakah parameter id dikirimkan
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            // Query ambil data produk
+            $query = mysqli_query($koneksi, "SELECT p.*, k.nm_kategori FROM tb_produk p 
+    LEFT JOIN tb_kategori k ON p.id_kategori = k.id_kategori WHERE id_produk='$id'");
+
+            // Cek apakah produk ada di database
+            if (mysqli_num_rows($query) > 0) {
+                $data = mysqli_fetch_assoc($query);
+            } else {
+                // Produk tidak ditemukan
+                echo "<script>alert('Produk tidak ditemukan.'); window.location.href = 'belanja.php';</script>";
+                exit;
+            }
+        } else {
+            // Jika parameter id tidak ada di URL
+            echo "<script>alert('Produk tidak valid.'); window.location.href = 'belanja.php';</script>";
+            exit;
+        }
         ?>
 
         <div class="content-wraper">
@@ -284,7 +301,7 @@ session_start();
                                 <div class="lg-image">
                                     <a class="popup-img venobox vbox-item" href="admin/produk_img/<?= $data['gambar'] ?>"
                                         data-gall="myGallery">
-                                        <img src="admin/produk_img/<?= $data['gambar'] ?>" alt="<?= $data['nm_produk'] ?>"
+                                        <img src="admin/produk_img/<?= $data['gambar'] ?>" alt="<?= htmlspecialchars($data['nm_produk']) ?>"
                                             width="300" height="300">
                                     </a>
                                 </div>
@@ -298,6 +315,7 @@ session_start();
                             window.location.href = 'belanja.php';
                         </script>
                     <?php endif; ?>
+
 
                     <div class="col-lg-7 col-md-6">
                         <div class="product-details-view-content p-2">
@@ -424,12 +442,7 @@ session_start();
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
                                                     <li class="add-cart active">
-                                                        <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">Beli Sekarang</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>" title="Quick View" class="quick-view-btn">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
+                                                        <a href="detail_produk.php?id=<?= $p['id_produk'] ?>">Beli Sekarang</a>
                                                     </li>
                                                 </ul>
                                             </div>
