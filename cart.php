@@ -269,7 +269,7 @@ session_start();
                             if (!$query_insert_jual) {
                                 echo "<script>alert('Gagal menyimpan data penjualan!'); window.location='cart.php';</script>";
                                 exit;
-                            }
+                            } 
 
 
                             foreach ($items as $item) {
